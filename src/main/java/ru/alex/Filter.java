@@ -1,5 +1,7 @@
 package ru.alex;
 
+import ru.alex.model.Field;
+
 import java.util.regex.Pattern;
 
 class Filter {
@@ -15,9 +17,9 @@ class Filter {
         return pattern.matcher(line).matches();
     }
 
-    Filter(Main.OptWithSep opt) {
-        this.value = opt.value;
-        this.field = opt.field;
+    Filter(Field opt) {
+        this.value = opt.getValue();
+        this.field = opt.getName();
         pattern = compile();
     }
 

@@ -2,6 +2,7 @@ package ru.alex;
 
 
 import org.apache.commons.cli.*;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import static org.junit.Assert.*;
 public class MainTest {
 
     @Test
-    public void likeRegexpTest() {
+    public void testPattern() {
         assertTrue(new Filter("calleridnum", "...").match("CallerIDNum: 123"));
         assertTrue(new Filter(".*", "...").match("CallerIDNum: 123"));
         assertFalse(new Filter(".*", "[0-9]{3}").match("CallerIDNum: 1234"));
@@ -22,9 +23,14 @@ public class MainTest {
     }
 
     @Test
-    public void optionsTest() throws ParseException {
-        final Main main = new Main();
-        final Options options = main.options;
+    @Ignore
+    public void testMain() throws Exception {
+        Main.main( "-u admin -s d8Frxv/T6Ha1 -p 5038 -h 10.0.26.37 -l call " .split(" "));
+    }
+
+    @Test
+    public void testOptions() throws ParseException {
+        final Options options = Main.Opt.create();
         final CommandLineParser parser = new DefaultParser();
 
         {
@@ -49,4 +55,6 @@ public class MainTest {
         }
 
     }
+
+
 }
