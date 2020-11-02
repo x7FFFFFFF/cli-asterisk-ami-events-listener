@@ -71,7 +71,7 @@ public class Client implements AutoCloseable {
 
 
     @Override
-    public void close() throws Exception {
+    public void close() throws IOException {
         out.close();
         in.close();
         socket.close();
