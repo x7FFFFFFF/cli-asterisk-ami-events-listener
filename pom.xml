@@ -34,7 +34,7 @@
                             <goal>single</goal>
                         </goals>
                         <configuration>
-                            <finalName>cliAsteriskAmiEvts</finalName>
+                            <finalName>cliAmi</finalName>
                             <archive>
                                 <manifest>
                                     <mainClass>ru.alex.Main</mainClass>

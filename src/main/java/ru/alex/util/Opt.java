@@ -3,24 +3,69 @@ package ru.alex.util;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
+import ru.alex.model.Command;
 import ru.alex.model.Field;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
-public  enum Opt {
+public enum Opt {
     USER("u", "user", "Manager username from manager.conf. Default - " + Constants.ADMIN, null, Constants.ADMIN, false),
     PASSWORD("s", "secret", "Manager password from manager.conf.", null, null, true),
     HOST("h", "host", "Ami server ip/name. Default - " + Constants.LOCALHOST, null, Constants.LOCALHOST, false),
     PORT("p", "port", "Ami server port. Default - " + Constants.PORT, null, Constants.PORT, false),
     SUBSCRIBE("l", "listen", Constants.SUBSCRIBE_DESC, ',', Constants.SYSTEM, false),
-    FILTER("f", "filter", Constants.FILTER_DESCR, ':', null, false);
+    MACROS("m", "macros", "File with macroses for star commands like '*79#<ext>'", ',', Constants.SYSTEM, false),
+    FILTER("f", "filter", Constants.FILTER_DESCR, ':', null, false) {
+        @Override
+        public List<Field> getAllFields(CommandLine line) {
+            Objects.requireNonNull(sep);
+            return getValues(line).stream().map(Field::new).collect(toList());
+        }
+    },
+    EXECUTE_COMMANDS("e", "execute", Constants.EXECUTE_DESC, ';', null, false) {
+        @Override
+        public List<Command> getCommands(CommandLine line) throws FileNotFoundException {
+            final String s = sep.toString();
+            final List<Macro> list = getValues(line).stream().flatMap(c -> Stream.of(c.trim().split(s))).map(Macro::new)
+                    .collect(toList());
+            if (list.isEmpty()) {
+                return Collections.emptyList();
+            }
+            final Macros macros = getMacros(line);
+            return list.stream().flatMap(m -> macros.render(m.name, m.args).stream())
+                    .collect(Collectors.toList());
+        }
 
-    private final String shortName;
+        private Macros getMacros(CommandLine line) throws FileNotFoundException {
+            final String file = getFirst(line, MACROS.shortName, null);
+            if (file != null) {
+                return new Macros(new FileInputStream(file));
+            }
+            return new Macros(getClass().getResourceAsStream(Macros.DEFAULT));
+        }
+
+        class Macro {
+            final String name;
+            final String[] args;
+
+            public Macro(String str) {
+                final String[] split = str.split("#");
+                name = split[0];
+                args = split.length == 2 ? split[1].split(",") : new String[]{};
+            }
+        }
+    };
+
+    protected final String shortName;
     private final String longName;
     private final String descr;
-    private final Character sep;
+    protected final Character sep;
     private final String defaultValue;
     private final boolean required;
 
@@ -34,20 +79,31 @@ public  enum Opt {
     }
 
     public List<Field> getAllFields(CommandLine line) {
-        Objects.requireNonNull(sep);
-        return getValues(line).stream().map(Field::new).collect(toList());
+        throw new UnsupportedOperationException();
     }
 
-    private List<String> getValues(CommandLine line) {
-        return Optional.ofNullable(line.getOptionValues(shortName)).map(Arrays::asList).orElse(Collections.emptyList());
+    public List<Command> getCommands(CommandLine line) throws FileNotFoundException {
+        throw new UnsupportedOperationException();
+    }
+
+    protected List<String> getValues(CommandLine line) {
+        return getValues(line, shortName);
+    }
+
+    protected List<String> getValues(CommandLine line, String name) {
+        return Optional.ofNullable(line.getOptionValues(name)).map(Arrays::asList).orElse(Collections.emptyList());
     }
 
     public List<String> getAll(CommandLine line) {
         return getValues(line);
     }
 
+    public String getFirst(CommandLine line, String name, String defaultValue) {
+        return Optional.ofNullable(line.getOptionValue(name)).orElse(defaultValue);
+    }
+
     public String getFirst(CommandLine line) {
-        return Optional.ofNullable(line.getOptionValue(shortName)).orElse(defaultValue);
+        return getFirst(line, shortName, defaultValue);
     }
 
     private Option option() {
@@ -83,5 +139,7 @@ public  enum Opt {
         public static final String FILTER_DESCR = "Event's header filter. Default - case insensitivity" +
                 "Serach by regexp pattern. \n " +
                 "Example:  -f 'event: status' -f '.*caller.*: [0-9]{3}'";
+        public static final String EXECUTE_DESC = "Execute commands. " +
+                "Example: DND for 9001 =>  -e *78#9001 ";
     }
 }

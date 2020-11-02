@@ -1,9 +1,6 @@
 package ru.alex;
 
-import ru.alex.model.Command;
-import ru.alex.model.Field;
-import ru.alex.model.Logoff;
-import ru.alex.model.Response;
+import ru.alex.model.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,9 +9,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-import static ru.alex.model.Command.COMMAND_END_PATTERN;
 
 public class Client implements AutoCloseable {
     private final int serverPort;
@@ -40,33 +35,32 @@ public class Client implements AutoCloseable {
     }
 
     public void logoff() {
-        new Logoff().print(out);
+        new LogoffCommand().print(out);
     }
 
     public Response send(Command command) throws IOException {
         //System.out.println(command);
         command.print(out);
-        String line;
-        final List<Field> fields = new ArrayList<>(30);
-        while (!(line = in.readLine()).isEmpty()) {
-            fields.add(new Field(line));
-        }
-        //System.out.println(response);
-        return new Response(fields.toArray(new Field[0]));
+        Message message;
+        do {
+            String line = in.readLine();
+            final List<Field> fields = new ArrayList<>(30);
+            Message.Type type = Message.Type.parse(line);
+            do {
+                fields.add(new Field(line));
+            } while (!(line = in.readLine()).isEmpty());
+            message = type.create(fields);
+            if (message.isEvent()) {
+                System.out.println(message);
+            }
+
+        } while (!message.isResponseFor(command));
+
+        return (Response) message;
     }
 
-    public Response listen() {
-        String line;
-        final List<Field> fields = new ArrayList<>(30);
-        try {
-            while (!(line = in.readLine()).isEmpty()) {
-                fields.add(new Field(line));
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        //System.out.println(response);
-        return new Response(fields.toArray(new Field[0]));
+    public Message listen() {
+        return Message.create(Field.read(in));
     }
 
 

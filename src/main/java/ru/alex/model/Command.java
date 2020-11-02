@@ -1,76 +1,49 @@
 package ru.alex.model;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-public class Command {
-    public static final String DELIM = "\r\n";
-    public static final Pattern DELIM_PATTERN = Pattern.compile(DELIM);
-    public static final Pattern COMMAND_END_PATTERN = Pattern.compile(DELIM + DELIM);
+import static ru.alex.model.Message.Constants.*;
 
-    public static final String ACTION = "Action";
-    public static final String LOGOFF = "Logoff";
 
-    private final Field action;
-    private final Map<String, Field> fields;
+public class Command extends Message {
+    public static final String[] FIRST = {ACTION, ACTION_ID};
 
     public Command(Field... fields) {
-        this.fields = collectFields(Stream.of(fields));
-        this.action = getField(ACTION);
+        super(getNewActionId(), fields);
+    }
+
+    public Command(List<Field> fields) {
+        super(fields);
+        getFields().put(ACTION_ID, getNewActionId());
     }
 
     public Command(String row) {
-        fields = collectFields(Stream.of(DELIM_PATTERN.split(row)).map(Field::new));
-        action = getField(ACTION);
+        super(row);
+        getFields().put(ACTION_ID, getNewActionId());
     }
 
-
-    private Map<String, Field> collectFields(Stream<Field> stream) {
-        return stream.filter(Field::isValid).collect(Collectors.toMap(Field::getName, f -> f, (u, v) -> {
-                    throw new IllegalStateException(String.format("Duplicate key %s", u));
-                },
-                LinkedHashMap::new));
+    private static Field getNewActionId() {
+        return new Field(ACTION_ID, generateActionId());
     }
 
-    protected Field getField(String name) {
-        return Objects.requireNonNull(fields.remove(name));
+    private static String generateActionId() {
+        return UUID.randomUUID().toString().replace("-", "");
     }
 
-    protected Field peekField(String name) {
-        return fields.get(name);
-    }
-
-    public boolean isLogoff() {
-        return action.getValue().equals(LOGOFF);
-    }
-
-    public Field getAction() {
-        return action;
-    }
-
-    public Map<String, Field> getFields() {
-        return fields;
-    }
-
-
-    public void print(PrintWriter out) {
-        out.print(action);
-        fields.values().forEach(out::print);
-        out.print(DELIM);
-        out.flush();
+    public String getAction() {
+        return Optional.ofNullable(getFields().get(ACTION))
+                .map(Field::getValue).orElseThrow(() -> new IllegalStateException("Action not found in command:" + this));
     }
 
     @Override
-    public String toString() {
-        final StringWriter out = new StringWriter();
-        final PrintWriter writer = new PrintWriter(out);
-        print(writer);
-        return out.toString();
+    protected String[] printFirst() {
+        return FIRST;
+    }
+
+    @Override
+    public Type getType() {
+        return Type.ACTION;
     }
 }

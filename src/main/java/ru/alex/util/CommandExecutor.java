@@ -2,10 +2,12 @@ package ru.alex.util;
 
 import ru.alex.Client;
 import ru.alex.model.Command;
+import ru.alex.model.Message;
 import ru.alex.model.Response;
 
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -36,9 +38,9 @@ public class CommandExecutor implements AutoCloseable {
         return predicate.test(response);
     }
 
-    public void execute(Function<Client, Response> command,
-                 Predicate<Response> predicate, Consumer<Response> consumer) throws IOException {
-        final Response response = command.apply(client);
+    public void execute(Function<Client, Message> command,
+                 Predicate<Message> predicate, Consumer<Message> consumer) throws IOException {
+        final Message response = command.apply(client);
         if (predicate.test(response)) {
             consumer.accept(response);
         }
@@ -47,5 +49,11 @@ public class CommandExecutor implements AutoCloseable {
     @Override
     public void close() throws IOException {
         client.close();
+    }
+
+    public void execute(List<Command> commands) throws IOException {
+        for (Command command : commands) {
+            execute(command);
+        }
     }
 }

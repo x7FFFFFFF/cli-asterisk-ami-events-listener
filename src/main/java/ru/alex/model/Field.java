@@ -1,8 +1,13 @@
 package ru.alex.model;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
-import static ru.alex.model.Command.ACTION;
+import static ru.alex.model.Message.Constants.*;
 
 public class Field {
     public static final String DELIM = ":";
@@ -30,6 +35,19 @@ public class Field {
         valid = true;
     }
 
+    public static List<Field> read(BufferedReader reader) {
+        String line;
+        final List<Field> fields = new ArrayList<>(30);
+        try {
+            while (!(line = reader.readLine()).isEmpty()) {
+                fields.add(new Field(line));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return fields;
+    }
+
     public static Field action(String name) {
         return new Field(ACTION, name);
     }
@@ -51,6 +69,8 @@ public class Field {
         if (!valid) {
             return "";
         }
-        return name + DELIM + " " + value + Command.DELIM;
+        return name + DELIM + " " + value + Message.Constants.DELIM;
     }
+
+
 }

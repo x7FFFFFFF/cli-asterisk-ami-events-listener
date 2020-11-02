@@ -7,11 +7,10 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Scanner;
 
-import static ru.alex.model.Command.COMMAND_END_PATTERN;
-import static ru.alex.model.Command.DELIM;
 
-public class TestServer extends Thread implements Closeable {
-    private final ServerSocket soket;
+
+public class TestServer/* extends Thread implements Closeable*/ {
+  /*  private final ServerSocket soket;
     private final int port;
 
     public static final String WELCOME = "Asterisk Call Manager/4.0.3" + DELIM+ DELIM;
@@ -63,5 +62,5 @@ public class TestServer extends Thread implements Closeable {
     @Override
     public void close() throws IOException {
         soket.close();
-    }
+    }*/
 }

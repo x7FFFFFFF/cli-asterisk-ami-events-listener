@@ -1,0 +1,12 @@
+*78 #Enables the do not disturb feature.
+Action: DBPut
+Family: DND
+Key: ${0}
+Val: YES
+
+*79 #Disables the do not disturb feature.
+Action: DBPut
+Family: DND
+Key: ${0}
+Val: NO
+

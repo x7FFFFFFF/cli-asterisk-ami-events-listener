@@ -1,59 +1,41 @@
 package ru.alex.model;
 
-public class Response extends Command {
-    public static final String RESPONSE = "Response";
-    public static final String MESSAGE = "Message";
-    public static final String SUCCESS = "Success";
-    public static final String GOODBYE = "Goodbye";
-    public static final String EVENT = "Event";
-    private Field response;
-    private Field message;
-    public static final Response SUCCESS_RESP = new Response(SUCCESS, "Message");
-    public static final Response GOODBYE_RESP = new Response(GOODBYE, "Message");
+import java.util.List;
 
-    public Response(String response, String message) {
-        super(new Field(RESPONSE, response), new Field(MESSAGE, message));
+import static ru.alex.model.Message.Constants.*;
+
+public class Response extends Message {
+
+    public static final String[] FIRST = {RESPONSE, MESSAGE, ACTION_ID};
+    public static final String SUCCESS = "Success";
+
+    public Response(List<Field> fields) {
+        super(fields);
     }
+
     public Response(Field... fields) {
         super(fields);
-        response = peekField(RESPONSE);
-        message = peekField(MESSAGE);
     }
+
     public Response(String row) {
         super(row);
-        response = peekField(RESPONSE);
-        message = peekField(MESSAGE);
+    }
+
+    public Response(String staus, String msg, String actionId) {
+        super(new Field(RESPONSE, staus), new Field[]{new Field(MESSAGE, msg), new Field(ACTION_ID, actionId)});
     }
 
     @Override
-    protected Field getField(String name) {
-        return Field.EMPTY;
+    protected String[] printFirst() {
+        return FIRST;
     }
-    public boolean isEvent() {
-        return getFields().containsKey(EVENT);
+
+    @Override
+    public Type getType() {
+        return Type.RESPONSE;
     }
 
     public boolean isOk() {
-        return response != null && response.getValue().equals(SUCCESS) || isGoodbye();
-    }
-
-    public boolean isGoodbye() {
-        return response != null && response.getValue().equals(GOODBYE);
-    }
-
-    public Field getResponse() {
-        return response;
-    }
-
-    public void setResponse(Field response) {
-        this.response = response;
-    }
-
-    public Field getMessage() {
-        return message;
-    }
-
-    public void setMessage(Field message) {
-        this.message = message;
+        return getFieldValue(MESSAGE).equalsIgnoreCase(SUCCESS);
     }
 }
