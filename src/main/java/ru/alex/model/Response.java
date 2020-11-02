@@ -36,6 +36,6 @@ public class Response extends Message {
     }
 
     public boolean isOk() {
-        return getFieldValue(MESSAGE).equalsIgnoreCase(SUCCESS);
+        return getFieldValue(RESPONSE).equalsIgnoreCase(SUCCESS);
     }
 }

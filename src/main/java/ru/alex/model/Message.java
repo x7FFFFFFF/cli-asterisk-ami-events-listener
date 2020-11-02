@@ -106,7 +106,7 @@ public abstract class Message {
     public boolean isResponseFor(Message message) {
         final Optional<String> thisActionId = getActionId();
         final Optional<String> otherActionId = message.getActionId();
-        if (otherActionId.isPresent() && thisActionId.isPresent() && message.isResponse()) {
+        if (otherActionId.isPresent() && thisActionId.isPresent() && isResponse()) {
             return otherActionId.get().equals(thisActionId.get());
         }
         return false;
