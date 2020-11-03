@@ -3,12 +3,15 @@ package ru.alex.util;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
+import ru.alex.Filter;
 import ru.alex.model.Command;
 import ru.alex.model.Field;
+import ru.alex.model.Message;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -23,9 +26,11 @@ public enum Opt {
     MACROS("m", "macros", "File with macroses for star commands like '*79#<ext>'", ',', Constants.SYSTEM, false),
     FILTER("f", "filter", Constants.FILTER_DESCR, ':', null, false) {
         @Override
-        public List<Field> getAllFields(CommandLine line) {
+        public Predicate<Message> getFilterPredicate(CommandLine line) {
             Objects.requireNonNull(sep);
-            return getValues(line).stream().map(Field::new).collect(toList());
+            final List<Filter> filters = getValues(line).stream().map(Field::new).map(Filter::new).collect(toList());
+            return  !filters.isEmpty() ? resp -> filters.stream().allMatch(f -> f.match(resp.getFields()))
+                    : resp -> true;
         }
     },
     EXECUTE_COMMANDS("e", "execute", Constants.EXECUTE_DESC, ';', null, false) {
@@ -78,7 +83,7 @@ public enum Opt {
         this.required = required;
     }
 
-    public List<Field> getAllFields(CommandLine line) {
+    public Predicate<Message> getFilterPredicate(CommandLine line) {
         throw new UnsupportedOperationException();
     }
 

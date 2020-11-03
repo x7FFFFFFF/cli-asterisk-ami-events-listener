@@ -54,6 +54,9 @@ public abstract class Message {
             }
         }
     }
+    public static Message create(Field... fields) {
+        return create(Arrays.asList(fields));
+    }
 
     public static Message create(List<Field> fields) {
         assert fields.size() >= 1;

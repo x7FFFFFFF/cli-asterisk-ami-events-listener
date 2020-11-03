@@ -1,0 +1,1913 @@
+Event: Newchannel
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 0
+ChannelStateDesc: Down
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: en
+AccountCode:
+Context: from-trunk
+Exten: 4956616060
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+
+
+Event: Newstate
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: from-trunk
+Exten: 4956616060
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: from-trunk
+Exten: 4956616060
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: 4956616060
+Application: NoOp
+AppData: Catch-All DID Match - Found 4956616060 - You probably want a DID for this.
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: from-trunk
+Exten: 4956616060
+Priority: 2
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: 4956616060
+Application: Log
+AppData: WARNING,Friendly Scanner from 213.167.57.106
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: from-trunk
+Exten: 4956616060
+Priority: 3
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: 4956616060
+Application: Set
+AppData: __FROM_DID=4956616060
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: from-trunk
+Exten: 4956616060
+Priority: 4
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: 4956616060
+Application: Goto
+AppData: ext-did,s,1
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: __DIRECTION=INBOUND
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 2
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Gosub
+AppData: sub-record-check,s,1(in,s,dontcare)
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: GotoIf
+AppData: 0?initialized
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 2
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: __REC_STATUS=INITIALIZED
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 3
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: NOW=1604333619
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 4
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: __DAY=02
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 5
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: __MONTH=11
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 6
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: __YEAR=2020
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 7
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: __TIMESTR=20201102-191339
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 8
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: __FROMEXTEN=unknown
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 9
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: __MON_FMT=wav
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 10
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: NoOp
+AppData: Recordings initialized
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 11
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: ExecIf
+AppData: 0?Set(ARG3=dontcare)
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 12
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: REC_POLICY_MODE_SAVE=
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 13
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: ExecIf
+AppData: 0?Set(REC_STATUS=NO)
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 14
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: GotoIf
+AppData: 2?checkaction
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: s
+Priority: 17
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: GotoIf
+AppData: 1?sub-record-check,in,1
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: in
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: in
+Application: NoOp
+AppData: Inbound Recording Check to s
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: in
+Priority: 2
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: in
+Application: Set
+AppData: FROMEXTEN=unknown
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: in
+Priority: 3
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: in
+Application: ExecIf
+AppData: 10?Set(FROMEXTEN=9260647698)
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: in
+Priority: 4
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: in
+Application: Gosub
+AppData: recordcheck,1(dontcare,in,s)
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: recordcheck
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: recordcheck
+Application: NoOp
+AppData: Starting recording check against dontcare
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: recordcheck
+Priority: 2
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: recordcheck
+Application: Goto
+AppData: dontcare
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: recordcheck
+Priority: 3
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: recordcheck
+Application: Return
+AppData:
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: sub-record-check
+Exten: in
+Priority: 5
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: in
+Application: Return
+AppData:
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 3
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: CHANNEL(tonezone)=us
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 4
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: ExecIf
+AppData: 0?Set(__FROM_DID=s)
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 5
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: returnhere=1
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 6
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Gosub
+AppData: app-blacklist-check,s,1()
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: app-blacklist-check
+Exten: s
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: GotoIf
+AppData: 0?blacklisted
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: app-blacklist-check
+Exten: s
+Priority: 2
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: CALLED_BLACKLIST=1
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: app-blacklist-check
+Exten: s
+Priority: 3
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Return
+AppData:
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 7
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: CDR(did)=4956616060
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 8
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: GotoIf
+AppData: 0?
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 9
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: ExecIf
+AppData: 1 ?Set(CALLERID(name)=9260647698)
+
+
+Event: NewCallerid
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 9
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+CID-CallingPres: 0 (Presentation Allowed, Not Screened)
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 10
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: __MOHCLASS=
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 11
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: __REVERSAL_REJECT=FALSE
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 12
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: GotoIf
+AppData: 1?post-reverse-charge
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 14
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: NoOp
+AppData:
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 15
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: __CALLINGNAMEPRES_SV=allowed_not_screened
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 16
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: __CALLINGNUMPRES_SV=allowed_not_screened
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 17
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: CALLERID(name-pres)=allowed_not_screened
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 18
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: CALLERID(num-pres)=allowed_not_screened
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 19
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: NoOp
+AppData: CallerID Entry Point
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ext-did
+Exten: s
+Priority: 20
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Goto
+AppData: ldp,s,1
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ldp
+Exten: s
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: NoOp
+AppData: "LDP dialplan v.2.0"
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ldp
+Exten: s
+Priority: 2
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: CALLERID(num)=89260647698
+
+
+Event: NewCallerid
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ldp
+Exten: s
+Priority: 2
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+CID-CallingPres: 0 (Presentation Allowed, Not Screened)
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ldp
+Exten: s
+Priority: 3
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: CALLERID(name)=89260647698
+
+
+Event: NewCallerid
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ldp
+Exten: s
+Priority: 3
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+CID-CallingPres: 0 (Presentation Allowed, Not Screened)
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ldp
+Exten: s
+Priority: 4
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: mydest=ivr-22
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ldp
+Exten: s
+Priority: 5
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: mydesttype=ivr
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ldp
+Exten: s
+Priority: 6
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: mydestname=22
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ldp
+Exten: s
+Priority: 7
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Goto
+AppData: ivr
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ldp
+Exten: s
+Priority: 8
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Goto
+AppData: ivr-22,s,1
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: INVALID_LOOPCOUNT=0
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 2
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: _IVR_CONTEXT_ivr-22=
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 3
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: _IVR_CONTEXT=ivr-22
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 4
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: __IVR_RETVM=
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 5
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: GotoIf
+AppData: 0?skip
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 6
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Answer
+AppData:
+
+
+Event: Newstate
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 6
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 7
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Wait
+AppData: 1
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 8
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: IVR_MSG=custom/Track2-NewClient&custom/Track3-Record
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 9
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: TIMEOUT(digit)=3
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 10
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: ExecIf
+AppData: 1?Background(custom/Track2-NewClient&custom/Track3-Record)
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: i
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: i
+Application: Set
+AppData: INVALID_LOOPCOUNT=1
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: i
+Priority: 2
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: i
+Application: GotoIf
+AppData: 0?final
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: i
+Priority: 3
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: i
+Application: Set
+AppData: IVR_MSG=no-valid-responce-pls-try-again
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: i
+Priority: 4
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: i
+Application: Goto
+AppData: s,start
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 9
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: TIMEOUT(digit)=3
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 10
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: ExecIf
+AppData: 1?Background(no-valid-responce-pls-try-again)
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: i
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: i
+Application: Set
+AppData: INVALID_LOOPCOUNT=2
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: i
+Priority: 2
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: i
+Application: GotoIf
+AppData: 0?final
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: i
+Priority: 3
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: i
+Application: Set
+AppData: IVR_MSG=no-valid-responce-pls-try-again
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: i
+Priority: 4
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: i
+Application: Goto
+AppData: s,start
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 9
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: Set
+AppData: TIMEOUT(digit)=3
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: s
+Priority: 10
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: s
+Application: ExecIf
+AppData: 1?Background(no-valid-responce-pls-try-again)
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: i
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: i
+Application: Set
+AppData: INVALID_LOOPCOUNT=3
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: i
+Priority: 2
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: i
+Application: GotoIf
+AppData: 1?final
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: i
+Priority: 5
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: i
+Application: Playback
+AppData: no-valid-responce-transfering
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: i
+Priority: 6
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: i
+Application: Goto
+AppData:
+
+
+Event: SoftHangupRequest
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: i
+Priority: 6
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Cause: 16
+
+
+Event: Newexten
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: h
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Extension: h
+Application: Hangup
+AppData:
+
+
+Event: Hangup
+Privilege: call,all
+Channel: SIP/4956616060-0000d1cf
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode:
+Context: ivr-22
+Exten: h
+Priority: 1
+Uniqueid: 1604333619.187899
+Linkedid: 1604333619.187899
+Cause: 16
+Cause-txt: Normal Clearing
+

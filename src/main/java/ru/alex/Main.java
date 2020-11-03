@@ -99,13 +99,9 @@ public class Main implements Closeable {
     }
 
     private void listen() throws IOException {
-        List<Filter> filterList = Opt.FILTER.getAllFields(parsed).stream().map(Filter::new).collect(Collectors.toList());
-        Predicate<Message> predicate = !filterList.isEmpty() ? resp -> filterList.stream().anyMatch(f -> f.match(resp.toString()))
-                : resp -> true;
+        Predicate<Message> predicate = Opt.FILTER.getFilterPredicate(parsed);
         while (!Thread.currentThread().isInterrupted()) {
-            executor.execute(Client::listen,
-                    predicate,
-                    System.out::println);
+            executor.printIf(Client::listen, predicate);
         }
     }
 

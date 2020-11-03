@@ -38,11 +38,11 @@ public class CommandExecutor implements AutoCloseable {
         return predicate.test(response);
     }
 
-    public void execute(Function<Client, Message> command,
-                 Predicate<Message> predicate, Consumer<Message> consumer) throws IOException {
+    public void printIf(Function<Client, Message> command,
+                        Predicate<Message> predicate) throws IOException {
         final Message response = command.apply(client);
         if (predicate.test(response)) {
-            consumer.accept(response);
+            out.println(response);
         }
     }
 
