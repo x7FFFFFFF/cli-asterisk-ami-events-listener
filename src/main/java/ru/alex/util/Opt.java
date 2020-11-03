@@ -141,7 +141,7 @@ public enum Opt {
         public static final String SUBSCRIBE_DESC = "Subscribe on events:\n" +
                 "(system,call,log,verbose,command,agent,user,config,command,dtmf,reporting,cdr,dialplan,originate,message)\n" +
                 " Example: '-s call,cdr'. Default: " + SYSTEM;
-        public static final String FILTER_DESCR = "Event's header filter. Default - case insensitivity" +
+        public static final String FILTER_DESCR = "Event's header filter. Default - case insensitivity\n" +
                 "Serach by regexp pattern. \n " +
                 "Example:  -f 'event: status' -f '.*caller.*: [0-9]{3}'";
         public static final String EXECUTE_DESC = "Execute commands. " +

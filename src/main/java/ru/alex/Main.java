@@ -29,20 +29,13 @@ public class Main implements Closeable {
     private final AtomicBoolean stopped = new AtomicBoolean(false);
     private final List<Command> commands;
 
-    public Main(String[] args) throws IOException {
+    public Main(Options options, String[] args) throws IOException {
         this.args = args;
-        options = Opt.create();
+        this.options = Opt.create();
         parser = new DefaultParser();
         helpFormatter = new HelpFormatter();
-        if (args.length == 0) {
-            System.out.println("Console utility for Asterisk AMI protocol interaction.");
-            System.out.println("Allows to execute AMI commands and subscribe to certain AMI events.");
-            helpFormatter.printHelp("java -jar cliAmi.jar <options>", options);
-            printDefaultMacroses();
-            throw new IllegalStateException();
-        }
         try {
-            parsed = parser.parse(options, args);
+            parsed = parser.parse(options, this.args);
         } catch (ParseException e) {
             System.out.println("ERROR:" + e.getMessage());
             helpFormatter.printHelp("ant", options);
@@ -54,11 +47,11 @@ public class Main implements Closeable {
         commands = Opt.EXECUTE_COMMANDS.getCommands(parsed);
     }
 
-    private void printDefaultMacroses() {
+    private static void printDefaultMacroses() {
         System.out.println("----------------------");
         System.out.println("Default macroses:");
         try (BufferedReader br = new BufferedReader(new InputStreamReader(
-                getClass().getResourceAsStream(Macros.DEFAULT)))) {
+                Main.class.getResourceAsStream(Macros.DEFAULT)))) {
             String line;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
@@ -107,8 +100,13 @@ public class Main implements Closeable {
 
 
     public static void main(String[] args) throws Exception {
-
-        try (final Main main = new Main(args)) {
+        System.out.println("Version " + Main.class.getPackage().getImplementationVersion());
+        final Options options = Opt.create();
+        if (args.length == 0) {
+            printUsage(options);
+            return;
+        }
+        try (final Main main = new Main(options, args)) {
             final List<Command> commands = main.getCommands();
             if (commands.isEmpty()) {
                 final ExecutorService executorService = Executors.newSingleThreadExecutor(r -> new Thread(r, "main-client-thread"));
@@ -119,6 +117,13 @@ public class Main implements Closeable {
                 main.launch();
             }
         }
+    }
+
+    private static void printUsage(Options options) {
+        System.out.println("Console utility for Asterisk AMI protocol interaction.");
+        System.out.println("Allows to execute AMI commands and subscribe to certain AMI events.");
+        new HelpFormatter().printHelp("java -jar cliAmi.jar <options>", options);
+        printDefaultMacroses();
     }
 
     private static void waitForExit() {
