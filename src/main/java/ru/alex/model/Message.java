@@ -28,7 +28,7 @@ public abstract class Message {
     }
 
     public enum Type {
-        ACTION(Constants.ACTION_ID), RESPONSE(Constants.RESPONSE), EVENT(Constants.EVENT);
+        ACTION(Constants.ACTION), RESPONSE(Constants.RESPONSE), EVENT(Constants.EVENT);
 
         private final String start;
 
