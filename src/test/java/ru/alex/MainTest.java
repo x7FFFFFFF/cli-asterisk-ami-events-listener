@@ -2,7 +2,6 @@ package ru.alex;
 
 
 import org.apache.commons.cli.*;
-import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import ru.alex.model.Command;
@@ -15,7 +14,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 import static ru.alex.util.Opt.*;
@@ -87,7 +85,8 @@ public class MainTest {
     public void testFilters() throws ParseException, IOException {
         final Options options = Opt.create();
         final CommandLineParser parser = new DefaultParser();
-        CommandLine line = parser.parse(options, ("--secret passw1  --filter .*idnum:.*9260647698 --filter Event:!Newexten").split(" "));
+        CommandLine line = parser.parse(options, ("--secret passw1  --filter /*any*/$n.endsWith('Num')&&$v.endsWith('9260647698') --filter /*none*/$n==='Event'&&$v==='Newexten'").split(" "));
+        //--filter Event:!Newexten
         final Predicate<Message> filterPredicate = FILTER.getFilterPredicate(line);
         try (final MessageParser messageParser = new MessageParser(getClass().getResourceAsStream("/testEvents.txt"), filterPredicate)) {
             final List<Message> parse = messageParser.parse();
@@ -102,13 +101,13 @@ public class MainTest {
         final Options options = Opt.create();
         final CommandLineParser parser = new DefaultParser();
         {
-            CommandLine line = parser.parse(options, ("--secret passw1  --filter .*:.* --filter Event:!Newexten").split(" "));
+            CommandLine line = parser.parse(options, ("--secret passw1  --filter /*any*//.*/.test($n) --filter /*none*/$n==='Event'&&$v==='Newexten'").split(" "));
             final Predicate<Message> filterPredicate = FILTER.getFilterPredicate(line);
             assertFalse(filterPredicate.test(Message.create(new Field("Event: Newexten"))));
         }
 
         {
-            CommandLine line = parser.parse(options, ("--secret passw1  --filter .*:.* --filter Event:Newexten").split(" "));
+            CommandLine line = parser.parse(options, ("--secret passw1  --filter /.*/.test($n) --filter $n==='Event'&&$v==='Newexten'").split(" "));
             final Predicate<Message> filterPredicate = FILTER.getFilterPredicate(line);
             assertTrue(filterPredicate.test(Message.create(new Field("Event: Newexten"))));
         }

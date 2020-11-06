@@ -28,10 +28,30 @@ public enum Opt {
         @Override
         public Predicate<Message> getFilterPredicate(CommandLine line) {
             Objects.requireNonNull(sep);
-            final List<Filter> filters = getValues(line).stream().map(Field::new).map(Filter::new).collect(toList());
-            return  !filters.isEmpty() ? resp -> filters.stream().allMatch(f -> f.match(resp.getFields()))
-                    : resp -> true;
+            final Map<MatchType, List<TypedPredicate>> map = getValues(line).stream().map(TypedPredicate::new).collect(Collectors.groupingBy(TypedPredicate::getMatchType));
+
+            final List<Predicate<Field>> filters = getValues(line).stream().map(JsFilter::new).map(JsFilter::predicate).collect(toList());
+            if (filters.isEmpty()) {
+                return ALL_PREDICATE;
+            }
+            /* message.getFields().values().stream().anyMatch(field->filters.stream().allMatch(filter->filter.test(field)));*/
+            return message -> map.entrySet().stream().allMatch(e -> match(e, message));
         }
+
+        private boolean match(Map.Entry<MatchType, List<TypedPredicate>> entry, Message message) {
+            final Stream<Field> stream = message.getFields().values().stream();
+            final List<TypedPredicate> predicates = entry.getValue();
+            switch (entry.getKey()) {
+                case ANY:
+                    return stream.anyMatch(field -> predicates.stream().allMatch(filter -> filter.test(field)));
+                case NONE:
+                    return stream.noneMatch(field -> predicates.stream().allMatch(filter -> filter.test(field)));
+                case ALL:
+                    return stream.allMatch(field -> predicates.stream().allMatch(filter -> filter.test(field)));
+            }
+            return false;
+        }
+
     },
     EXECUTE_COMMANDS("e", "execute", Constants.EXECUTE_DESC, ';', null, false) {
         @Override
@@ -67,6 +87,7 @@ public enum Opt {
         }
     };
 
+    public static final Predicate<Message> ALL_PREDICATE = msg -> true;
     protected final String shortName;
     private final String longName;
     private final String descr;
@@ -141,10 +162,50 @@ public enum Opt {
         public static final String SUBSCRIBE_DESC = "Subscribe on events:\n" +
                 "(system,call,log,verbose,command,agent,user,config,command,dtmf,reporting,cdr,dialplan,originate,message)\n" +
                 " Example: '-s call,cdr'. Default: " + SYSTEM;
-        public static final String FILTER_DESCR = "Event's header filter. Default - case insensitivity\n" +
-                "Serach by regexp pattern. \n " +
-                "Example:  -f 'event: status' -f '.*caller.*: [0-9]{3}'";
+        public static final String FILTER_DESCR = "Javascript boolean expression to filter events\n" +
+                "Example:  -f '/*any*/$v===\'9001\' && $n.endsWith(\'Num\')'\n" +
+                "Where $n - field name (String), $v - field value (String). \n" +
+                "Expression must return boolean value. Expression may start with '/*any*/', '/*none*/', '/*all*/'\n" +
+                "any - any match (default), all - all match, none - none match";
         public static final String EXECUTE_DESC = "Execute commands. " +
                 "Example: DND for 9001 =>  -e *78#9001 ";
     }
+}
+
+class TypedPredicate implements Predicate<Field> {
+    private final MatchType matchType;
+    private final Predicate<Field> predicate;
+
+    public TypedPredicate(String str) {
+        predicate = new JsFilter(str).predicate();
+        matchType = MatchType.value(str);
+    }
+
+    public MatchType getMatchType() {
+        return matchType;
+    }
+
+    public Predicate<Field> getPredicate() {
+        return predicate;
+    }
+
+    @Override
+    public boolean test(Field field) {
+        return predicate.test(field);
+    }
+}
+
+enum MatchType {
+    ANY("/*any*/"), NONE("/*none*/"), ALL("/*all*/");
+
+    private final String val;
+
+    MatchType(String val) {
+        this.val = val;
+    }
+
+    public static MatchType value(String str) {
+        return Stream.of(values()).filter(v -> str.startsWith(v.val)).findFirst().orElse(MatchType.ANY);
+    }
+
 }
