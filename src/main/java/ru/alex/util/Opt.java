@@ -3,9 +3,7 @@ package ru.alex.util;
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
-import ru.alex.Filter;
 import ru.alex.model.Command;
-import ru.alex.model.Field;
 import ru.alex.model.Message;
 
 import java.io.FileInputStream;
@@ -22,36 +20,18 @@ public enum Opt {
     PASSWORD("s", "secret", "Manager password from manager.conf.", null, null, true),
     HOST("h", "host", "Ami server ip/name. Default - " + Constants.LOCALHOST, null, Constants.LOCALHOST, false),
     PORT("p", "port", "Ami server port. Default - " + Constants.PORT, null, Constants.PORT, false),
-    SUBSCRIBE("l", "listen", Constants.SUBSCRIBE_DESC, ',', Constants.SYSTEM, false),
-    MACROS("m", "macros", "File with macroses for star commands like '*79#<ext>'", ',', Constants.SYSTEM, false),
+    SUBSCRIBE("l", "listen", Constants.SUBSCRIBE_DESC, ',', Constants.ALL, false),
+    MACROS("m", "macros", "File with macroses for star commands like '*79#<ext>'", ',', Constants.ALL, false),
     FILTER("f", "filter", Constants.FILTER_DESCR, ':', null, false) {
         @Override
         public Predicate<Message> getFilterPredicate(CommandLine line) {
             Objects.requireNonNull(sep);
-            final Map<MatchType, List<TypedPredicate>> map = getValues(line).stream().map(TypedPredicate::new).collect(Collectors.groupingBy(TypedPredicate::getMatchType));
-
-            final List<Predicate<Field>> filters = getValues(line).stream().map(JsFilter::new).map(JsFilter::predicate).collect(toList());
+            final List<Predicate<Message>> filters = getValues(line).stream().map(JsFilter::new).map(JsFilter::predicate).collect(toList());
             if (filters.isEmpty()) {
                 return ALL_PREDICATE;
             }
-            /* message.getFields().values().stream().anyMatch(field->filters.stream().allMatch(filter->filter.test(field)));*/
-            return message -> map.entrySet().stream().allMatch(e -> match(e, message));
+            return message -> filters.stream().allMatch(f -> f.test(message));
         }
-
-        private boolean match(Map.Entry<MatchType, List<TypedPredicate>> entry, Message message) {
-            final Stream<Field> stream = message.getFields().values().stream();
-            final List<TypedPredicate> predicates = entry.getValue();
-            switch (entry.getKey()) {
-                case ANY:
-                    return stream.anyMatch(field -> predicates.stream().allMatch(filter -> filter.test(field)));
-                case NONE:
-                    return stream.noneMatch(field -> predicates.stream().allMatch(filter -> filter.test(field)));
-                case ALL:
-                    return stream.allMatch(field -> predicates.stream().allMatch(filter -> filter.test(field)));
-            }
-            return false;
-        }
-
     },
     EXECUTE_COMMANDS("e", "execute", Constants.EXECUTE_DESC, ';', null, false) {
         @Override
@@ -158,54 +138,31 @@ public enum Opt {
         public static final String ADMIN = "admin";
         public static final String LOCALHOST = "localhost";
         public static final String PORT = "5038";
-        public static final String SYSTEM = "system";
+        public static final String ALL = "all";
         public static final String SUBSCRIBE_DESC = "Subscribe on events:\n" +
                 "(system,call,log,verbose,command,agent,user,config,command,dtmf,reporting,cdr,dialplan,originate,message)\n" +
-                " Example: '-s call,cdr'. Default: " + SYSTEM;
-        public static final String FILTER_DESCR = "Javascript boolean expression to filter events\n" +
-                "Example:  -f '/*any*/$v===\'9001\' && $n.endsWith(\'Num\')'\n" +
-                "Where $n - field name (String), $v - field value (String). \n" +
-                "Expression must return boolean value. Expression may start with '/*any*/', '/*none*/', '/*all*/'\n" +
-                "any - any match (default), all - all match, none - none match";
+                " Example: '-s call,cdr'. Default: " + ALL;
+        public static final String FILTER_DESCR = "Javascript boolean expression to filter events.\n" +
+                "Predefined variables:\n" +
+                " '$msg' - event fields as map, '$str'- event fields as string\n" +
+                "Example:\n" +
+                "Event: Newchannel\n" +
+                "Privilege: call,all\n" +
+                "Channel: SIP/4956616060-0001245a\n" +
+                "ChannelState: 0'\n" +
+                "For this event $msg = {Event:'Newchannel', Privilege: 'call,all', Channel:'SIP/4956616060-0001245a', ChannelState:'0'}\n" +
+                "$msg also support uppercase and lowercase keys:  $msg.Event===$msg.event===$msg.EVENT\n" +
+                "$msg has additional methods:  \n" +
+                "$msg.keysIncludes(<String|RegExp>)\n" +
+                "$msg.valuesIncludes(<String|RegExp>)\n" +
+                "Example:\n" +
+                "show only events containing a number 88009009001:  \n" +
+                "java -jar cliAmi.jar -f \"$str.includes('88009009001')\"\n" +
+                "show only HangupRequest events containing a number 88009009001: \n" +
+                " java -jar cliAmi.jar -f \"$str.includes('88009009001')&&$msg.Event==='HangupRequest'\"\n" +
+                "show only events containing fields that has any match the regular expression: \n" +
+                "java -jar cliAmi.jar -f \"$msg.keysIncludes(/^.*IDNum.*$/)\"\n";
         public static final String EXECUTE_DESC = "Execute commands. " +
                 "Example: DND for 9001 =>  -e *78#9001 ";
     }
-}
-
-class TypedPredicate implements Predicate<Field> {
-    private final MatchType matchType;
-    private final Predicate<Field> predicate;
-
-    public TypedPredicate(String str) {
-        predicate = new JsFilter(str).predicate();
-        matchType = MatchType.value(str);
-    }
-
-    public MatchType getMatchType() {
-        return matchType;
-    }
-
-    public Predicate<Field> getPredicate() {
-        return predicate;
-    }
-
-    @Override
-    public boolean test(Field field) {
-        return predicate.test(field);
-    }
-}
-
-enum MatchType {
-    ANY("/*any*/"), NONE("/*none*/"), ALL("/*all*/");
-
-    private final String val;
-
-    MatchType(String val) {
-        this.val = val;
-    }
-
-    public static MatchType value(String str) {
-        return Stream.of(values()).filter(v -> str.startsWith(v.val)).findFirst().orElse(MatchType.ANY);
-    }
-
 }

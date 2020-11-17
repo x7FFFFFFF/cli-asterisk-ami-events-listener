@@ -1,0 +1,1057 @@
+Action: Login
+ActionID: 3ef8e26e94ef4f88917e9faea9676261
+Username: admin
+Secret: d8Frxv/T6Ha1
+
+
+Response: Success
+Message: Authentication accepted
+ActionID: 3ef8e26e94ef4f88917e9faea9676261
+
+
+Action: Events
+ActionID: ac58de05d41d4056983a6e5d389cf650
+EventMask: call
+
+
+Event: FullyBooted
+Privilege: system,all
+Uptime: 1011389
+LastReload: 8822
+Status: Fully Booted
+
+
+Response: Success
+nullActionID: ac58de05d41d4056983a6e5d389cf650
+Events: On
+
+
+Event: Newchannel
+Privilege: call,all
+Channel: SIP/4956616060-0001245a
+ChannelState: 0
+ChannelStateDesc: Down
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: en
+AccountCode: 
+Context: from-trunk
+Exten: 4956616060
+Priority: 1
+Uniqueid: 1604587128.270964
+Linkedid: 1604587128.270964
+
+
+Event: Newstate
+Privilege: call,all
+Channel: SIP/4956616060-0001245a
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: from-trunk
+Exten: 4956616060
+Priority: 1
+Uniqueid: 1604587128.270964
+Linkedid: 1604587128.270964
+
+
+Event: NewCallerid
+Privilege: call,all
+Channel: SIP/4956616060-0001245a
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: ext-did
+Exten: s
+Priority: 9
+Uniqueid: 1604587128.270964
+Linkedid: 1604587128.270964
+CID-CallingPres: 0 (Presentation Allowed, Not Screened)
+
+
+Event: NewCallerid
+Privilege: call,all
+Channel: SIP/4956616060-0001245a
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: ldp
+Exten: s
+Priority: 2
+Uniqueid: 1604587128.270964
+Linkedid: 1604587128.270964
+CID-CallingPres: 0 (Presentation Allowed, Not Screened)
+
+
+Event: NewCallerid
+Privilege: call,all
+Channel: SIP/4956616060-0001245a
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: ldp
+Exten: s
+Priority: 3
+Uniqueid: 1604587128.270964
+Linkedid: 1604587128.270964
+CID-CallingPres: 0 (Presentation Allowed, Not Screened)
+
+
+Event: Newstate
+Privilege: call,all
+Channel: SIP/4956616060-0001245a
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: ivr-26
+Exten: s
+Priority: 6
+Uniqueid: 1604587128.270964
+Linkedid: 1604587128.270964
+
+
+Event: HangupRequest
+Privilege: call,all
+Channel: SIP/4956616060-0001245a
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: ivr-26
+Exten: s
+Priority: 10
+Uniqueid: 1604587128.270964
+Linkedid: 1604587128.270964
+
+
+Event: SoftHangupRequest
+Privilege: call,all
+Channel: SIP/4956616060-0001245a
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: ivr-26
+Exten: s
+Priority: 10
+Uniqueid: 1604587128.270964
+Linkedid: 1604587128.270964
+Cause: 16
+
+
+Event: Hangup
+Privilege: call,all
+Channel: SIP/4956616060-0001245a
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: ivr-26
+Exten: h
+Priority: 1
+Uniqueid: 1604587128.270964
+Linkedid: 1604587128.270964
+Cause: 16
+Cause-txt: Normal Clearing
+
+
+Event: Newchannel
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 0
+ChannelStateDesc: Down
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: en
+AccountCode: 
+Context: from-trunk
+Exten: 4956616060
+Priority: 1
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+
+
+Event: Newstate
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: <unknown>
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: from-trunk
+Exten: 4956616060
+Priority: 1
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+
+
+Event: NewCallerid
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 9260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: ext-did
+Exten: s
+Priority: 9
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+CID-CallingPres: 0 (Presentation Allowed, Not Screened)
+
+
+Event: NewCallerid
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 9260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: ldp
+Exten: s
+Priority: 2
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+CID-CallingPres: 0 (Presentation Allowed, Not Screened)
+
+
+Event: NewCallerid
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: ldp
+Exten: s
+Priority: 3
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+CID-CallingPres: 0 (Presentation Allowed, Not Screened)
+
+
+Event: Newstate
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: <unknown>
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: ivr-26
+Exten: s
+Priority: 6
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+
+
+Event: NewConnectedLine
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: <unknown>
+Language: ru
+AccountCode: 
+Context: followme-sub
+Exten: 9001
+Priority: 3
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+
+
+Event: NewConnectedLine
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: followme-sub
+Exten: 9001
+Priority: 5
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+
+
+Event: NewCallerid
+Privilege: call,all
+Channel: Local/FMPR-9001@from-internal-00017f11;2
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: from-internal
+Exten: FMPR-9001
+Priority: 1
+Uniqueid: 1604587148.270981
+Linkedid: 1604587139.270979
+CID-CallingPres: 0 (Presentation Allowed, Not Screened)
+
+
+Event: NewConnectedLine
+Privilege: call,all
+Channel: Local/FMPR-9001@from-internal-00017f11;2
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: from-internal
+Exten: FMPR-9001
+Priority: 1
+Uniqueid: 1604587148.270981
+Linkedid: 1604587139.270979
+
+
+Event: DialBegin
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: macro-dial
+Exten: s
+Priority: 22
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+DestChannel: Local/FMPR-9001@from-internal-00017f11;1
+DestChannelState: 0
+DestChannelStateDesc: Down
+DestCallerIDNum: 9001
+DestCallerIDName: Test Ext A
+DestConnectedLineNum: 89260647698
+DestConnectedLineName: 89260647698
+DestLanguage: en
+DestAccountCode: 
+DestContext: func-apply-sipheaders
+DestExten: s
+DestPriority: 9
+DestUniqueid: 1604587148.270980
+DestLinkedid: 1604587139.270979
+DialString: FMPR-9001@from-internal
+
+
+Event: NewCallerid
+Privilege: call,all
+Channel: Local/FMGL-9000#@from-internal-00017f12;2
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: from-internal
+Exten: FMGL-9000#
+Priority: 1
+Uniqueid: 1604587148.270983
+Linkedid: 1604587139.270979
+CID-CallingPres: 0 (Presentation Allowed, Not Screened)
+
+
+Event: NewConnectedLine
+Privilege: call,all
+Channel: Local/FMGL-9000#@from-internal-00017f12;2
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: from-internal
+Exten: FMGL-9000#
+Priority: 1
+Uniqueid: 1604587148.270983
+Linkedid: 1604587139.270979
+
+
+Event: DialBegin
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: macro-dial
+Exten: s
+Priority: 22
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+DestChannel: Local/FMGL-9000#@from-internal-00017f12;1
+DestChannelState: 0
+DestChannelStateDesc: Down
+DestCallerIDNum: 9001
+DestCallerIDName: Test Ext A
+DestConnectedLineNum: 89260647698
+DestConnectedLineName: 89260647698
+DestLanguage: en
+DestAccountCode: 
+DestContext: func-apply-sipheaders
+DestExten: s
+DestPriority: 9
+DestUniqueid: 1604587148.270982
+DestLinkedid: 1604587139.270979
+DialString: FMGL-9000#@from-internal
+
+
+Event: DialBegin
+Privilege: call,all
+Channel: Local/FMPR-9001@from-internal-00017f11;2
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: macro-dial-one
+Exten: s
+Priority: 54
+Uniqueid: 1604587148.270981
+Linkedid: 1604587139.270979
+DestChannel: SIP/9001-00012462
+DestChannelState: 0
+DestChannelStateDesc: Down
+DestCallerIDNum: 9001
+DestCallerIDName: Test Ext A
+DestConnectedLineNum: 89260647698
+DestConnectedLineName: 89260647698
+DestLanguage: ru
+DestAccountCode: 
+DestContext: func-apply-sipheaders
+DestExten: s
+DestPriority: 9
+DestUniqueid: 1604587148.270984
+DestLinkedid: 1604587139.270979
+DialString: 9001
+
+
+Event: DialState
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: macro-dial
+Exten: s
+Priority: 22
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+DestChannel: Local/FMPR-9001@from-internal-00017f11;1
+DestChannelState: 5
+DestChannelStateDesc: Ringing
+DestCallerIDNum: 9001
+DestCallerIDName: Test Ext A
+DestConnectedLineNum: 89260647698
+DestConnectedLineName: 89260647698
+DestLanguage: en
+DestAccountCode: 
+DestContext: from-internal
+DestExten: 9001
+DestPriority: 1
+DestUniqueid: 1604587148.270980
+DestLinkedid: 1604587139.270979
+DialStatus: RINGING
+
+
+Event: DialState
+Privilege: call,all
+Channel: Local/FMPR-9001@from-internal-00017f11;2
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: macro-dial-one
+Exten: s
+Priority: 54
+Uniqueid: 1604587148.270981
+Linkedid: 1604587139.270979
+DestChannel: SIP/9001-00012462
+DestChannelState: 5
+DestChannelStateDesc: Ringing
+DestCallerIDNum: 9001
+DestCallerIDName: Test Ext A
+DestConnectedLineNum: 89260647698
+DestConnectedLineName: 89260647698
+DestLanguage: ru
+DestAccountCode: 
+DestContext: from-internal
+DestExten: FMPR-9001
+DestPriority: 1
+DestUniqueid: 1604587148.270984
+DestLinkedid: 1604587139.270979
+DialStatus: RINGING
+
+
+Event: DialState
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: macro-dial
+Exten: s
+Priority: 22
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+DestChannel: Local/FMPR-9001@from-internal-00017f11;1
+DestChannelState: 5
+DestChannelStateDesc: Ringing
+DestCallerIDNum: 9001
+DestCallerIDName: Test Ext A
+DestConnectedLineNum: 89260647698
+DestConnectedLineName: 89260647698
+DestLanguage: en
+DestAccountCode: 
+DestContext: from-internal
+DestExten: 9001
+DestPriority: 1
+DestUniqueid: 1604587148.270980
+DestLinkedid: 1604587139.270979
+DialStatus: RINGING
+
+
+Event: DialEnd
+Privilege: call,all
+Channel: Local/FMPR-9001@from-internal-00017f11;2
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: macro-dial-one
+Exten: s
+Priority: 54
+Uniqueid: 1604587148.270981
+Linkedid: 1604587139.270979
+DestChannel: SIP/9001-00012462
+DestChannelState: 6
+DestChannelStateDesc: Up
+DestCallerIDNum: 9001
+DestCallerIDName: Test Ext A
+DestConnectedLineNum: 89260647698
+DestConnectedLineName: 89260647698
+DestLanguage: ru
+DestAccountCode: 
+DestContext: macro-dial-one
+DestExten: s
+DestPriority: 1
+DestUniqueid: 1604587148.270984
+DestLinkedid: 1604587139.270979
+DialStatus: ANSWER
+
+
+Event: Newstate
+Privilege: call,all
+Channel: Local/FMPR-9001@from-internal-00017f11;2
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: macro-dial-one
+Exten: s
+Priority: 54
+Uniqueid: 1604587148.270981
+Linkedid: 1604587139.270979
+
+
+Event: DialEnd
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: macro-dial
+Exten: s
+Priority: 22
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+DestChannel: Local/FMGL-9000#@from-internal-00017f12;1
+DestChannelState: 0
+DestChannelStateDesc: Down
+DestCallerIDNum: 9001
+DestCallerIDName: Test Ext A
+DestConnectedLineNum: 89260647698
+DestConnectedLineName: 89260647698
+DestLanguage: en
+DestAccountCode: 
+DestContext: from-internal
+DestExten: 9001
+DestPriority: 1
+DestUniqueid: 1604587148.270982
+DestLinkedid: 1604587139.270979
+DialStatus: CANCEL
+
+
+Event: HangupRequest
+Privilege: call,all
+Channel: Local/FMGL-9000#@from-internal-00017f12;2
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: from-internal
+Exten: FMGL-9000#
+Priority: 5
+Uniqueid: 1604587148.270983
+Linkedid: 1604587139.270979
+Cause: 26
+
+
+Event: SoftHangupRequest
+Privilege: call,all
+Channel: Local/FMGL-9000#@from-internal-00017f12;2
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: from-internal
+Exten: FMGL-9000#
+Priority: 5
+Uniqueid: 1604587148.270983
+Linkedid: 1604587139.270979
+Cause: 16
+
+
+Event: BridgeEnter
+Privilege: call,all
+BridgeUniqueid: bb96b1c0-c111-40a0-91a1-5b853c00f717
+BridgeType: basic
+BridgeTechnology: simple_bridge
+BridgeCreator: <unknown>
+BridgeName: <unknown>
+BridgeNumChannels: 2
+BridgeVideoSourceMode: none
+Channel: Local/FMPR-9001@from-internal-00017f11;2
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: macro-dial-one
+Exten: s
+Priority: 54
+Uniqueid: 1604587148.270981
+Linkedid: 1604587139.270979
+
+
+Event: DialEnd
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: macro-dial
+Exten: s
+Priority: 22
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+DestChannel: Local/FMPR-9001@from-internal-00017f11;1
+DestChannelState: 6
+DestChannelStateDesc: Up
+DestCallerIDNum: 9001
+DestCallerIDName: Test Ext A
+DestConnectedLineNum: 89260647698
+DestConnectedLineName: 89260647698
+DestLanguage: en
+DestAccountCode: 
+DestContext: macro-dial
+DestExten: s
+DestPriority: 1
+DestUniqueid: 1604587148.270980
+DestLinkedid: 1604587139.270979
+DialStatus: ANSWER
+
+
+Event: BridgeEnter
+Privilege: call,all
+BridgeUniqueid: 6bcc63df-bf63-43b2-a898-2c60cfa4bc2e
+BridgeType: basic
+BridgeTechnology: simple_bridge
+BridgeCreator: <unknown>
+BridgeName: <unknown>
+BridgeNumChannels: 2
+BridgeVideoSourceMode: none
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: macro-dial
+Exten: s
+Priority: 22
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+
+
+Event: BridgeLeave
+Privilege: call,all
+BridgeUniqueid: 6bcc63df-bf63-43b2-a898-2c60cfa4bc2e
+BridgeType: basic
+BridgeTechnology: simple_bridge
+BridgeCreator: <unknown>
+BridgeName: <unknown>
+BridgeNumChannels: 1
+BridgeVideoSourceMode: none
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: macro-dial
+Exten: s
+Priority: 22
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+
+
+Event: BridgeLeave
+Privilege: call,all
+BridgeUniqueid: bb96b1c0-c111-40a0-91a1-5b853c00f717
+BridgeType: basic
+BridgeTechnology: simple_bridge
+BridgeCreator: <unknown>
+BridgeName: <unknown>
+BridgeNumChannels: 1
+BridgeVideoSourceMode: none
+Channel: Local/FMPR-9001@from-internal-00017f11;2
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: macro-dial-one
+Exten: s
+Priority: 54
+Uniqueid: 1604587148.270981
+Linkedid: 1604587139.270979
+
+
+Event: BridgeEnter
+Privilege: call,all
+BridgeUniqueid: bb96b1c0-c111-40a0-91a1-5b853c00f717
+BridgeType: basic
+BridgeTechnology: simple_bridge
+BridgeCreator: <unknown>
+BridgeName: <unknown>
+BridgeNumChannels: 2
+BridgeVideoSourceMode: none
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: macro-dial
+Exten: s
+Priority: 22
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+SwapUniqueid: 1604587148.270981
+
+
+Event: HangupRequest
+Privilege: call,all
+Channel: Local/FMPR-9001@from-internal-00017f11;2
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: macro-dial-one
+Exten: s
+Priority: 54
+Uniqueid: 1604587148.270981
+Linkedid: 1604587139.270979
+Cause: 16
+
+
+Event: SoftHangupRequest
+Privilege: call,all
+Channel: Local/FMPR-9001@from-internal-00017f11;2
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: from-internal
+Exten: FMPR-9001
+Priority: 5
+Uniqueid: 1604587148.270981
+Linkedid: 1604587139.270979
+Cause: 16
+
+
+Event: Hangup
+Privilege: call,all
+Channel: Local/FMGL-9000#@from-internal-00017f12;2
+ChannelState: 4
+ChannelStateDesc: Ring
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: from-internal
+Exten: h
+Priority: 1
+Uniqueid: 1604587148.270983
+Linkedid: 1604587139.270979
+Cause: 26
+Cause-txt: Answered elsewhere
+
+
+Event: Hangup
+Privilege: call,all
+Channel: Local/FMPR-9001@from-internal-00017f11;2
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: en
+AccountCode: 
+Context: from-internal
+Exten: h
+Priority: 1
+Uniqueid: 1604587148.270981
+Linkedid: 1604587139.270979
+Cause: 16
+Cause-txt: Normal Clearing
+
+
+Event: HangupRequest
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: macro-dial
+Exten: s
+Priority: 22
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+Cause: 16
+
+
+Event: BridgeLeave
+Privilege: call,all
+BridgeUniqueid: bb96b1c0-c111-40a0-91a1-5b853c00f717
+BridgeType: basic
+BridgeTechnology: simple_bridge
+BridgeCreator: <unknown>
+BridgeName: <unknown>
+BridgeNumChannels: 1
+BridgeVideoSourceMode: none
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: macro-dial
+Exten: s
+Priority: 22
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+
+
+Event: SoftHangupRequest
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: followme-sub
+Exten: 9001
+Priority: 40
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+Cause: 16
+
+
+Event: Hangup
+Privilege: call,all
+Channel: SIP/4956616060-00012461
+ChannelState: 6
+ChannelStateDesc: Up
+CallerIDNum: 89260647698
+CallerIDName: 89260647698
+ConnectedLineNum: 9001
+ConnectedLineName: Test Ext A
+Language: ru
+AccountCode: 
+Context: followme-sub
+Exten: 9001
+Priority: 40
+Uniqueid: 1604587139.270979
+Linkedid: 1604587139.270979
+Cause: 16
+Cause-txt: Normal Clearing
+
+

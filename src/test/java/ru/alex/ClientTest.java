@@ -2,17 +2,11 @@ package ru.alex;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import ru.alex.model.Command;
 import ru.alex.model.LoginCommand;
 import ru.alex.model.Message;
 import ru.alex.model.Response;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.function.BiConsumer;
-
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 public class ClientTest {
     @Test

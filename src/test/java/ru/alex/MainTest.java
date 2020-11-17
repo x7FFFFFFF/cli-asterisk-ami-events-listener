@@ -46,12 +46,7 @@ public class MainTest {
 
         {
             CommandLine line = parser.parse(options, ("--user user1 --secret passw1 --host 123.0.0.7 --listen call,system " +
-                    " --filter .*event.*:.*status.* --filter .*callerid.*:[0-9]{3}" +
                     " --execute *78#101;*79#101").split(" "));
-            //List<Filter> filterList = FILTER.getFilterPredicate(line).stream().map(Filter::new).collect(Collectors.toList());
-            /*assertEquals(2, filterList.size());*/
-          /*  assertEquals("(?i)^\\s*.*event.*\\s*:\\s*.*status.*\\s*$", filterList.get(0).getPattern().toString());
-            assertEquals("(?i)^\\s*.*callerid.*\\s*:\\s*[0-9]{3}\\s*$", filterList.get(1).getPattern().toString());*/
             assertEquals("user1", USER.getFirst(line));
             assertEquals("passw1", PASSWORD.getFirst(line));
             assertEquals("123.0.0.7", HOST.getFirst(line));
@@ -85,8 +80,8 @@ public class MainTest {
     public void testFilters() throws ParseException, IOException {
         final Options options = Opt.create();
         final CommandLineParser parser = new DefaultParser();
-        CommandLine line = parser.parse(options, ("--secret passw1  --filter /*any*/$n.endsWith('Num')&&$v.endsWith('9260647698') --filter /*none*/$n==='Event'&&$v==='Newexten'").split(" "));
-        //--filter Event:!Newexten
+        CommandLine line = parser.parse(options, ("--secret passw1  " +
+                "--filter $msg.keysIncludes(/^.*Num.*$/)&&$msg.valuesIncludes(/^.*9260647698.*$/)  --filter !$msg.valuesIncludes('Newexten')").split(" "));
         final Predicate<Message> filterPredicate = FILTER.getFilterPredicate(line);
         try (final MessageParser messageParser = new MessageParser(getClass().getResourceAsStream("/testEvents.txt"), filterPredicate)) {
             final List<Message> parse = messageParser.parse();
@@ -101,16 +96,32 @@ public class MainTest {
         final Options options = Opt.create();
         final CommandLineParser parser = new DefaultParser();
         {
-            CommandLine line = parser.parse(options, ("--secret passw1  --filter /*any*//.*/.test($n) --filter /*none*/$n==='Event'&&$v==='Newexten'").split(" "));
+            CommandLine line = parser.parse(options, ("--secret passw1 --filter !$msg.valuesIncludes('Newexten')").split(" "));
             final Predicate<Message> filterPredicate = FILTER.getFilterPredicate(line);
             assertFalse(filterPredicate.test(Message.create(new Field("Event: Newexten"))));
         }
 
         {
-            CommandLine line = parser.parse(options, ("--secret passw1  --filter /.*/.test($n) --filter $n==='Event'&&$v==='Newexten'").split(" "));
+            CommandLine line = parser.parse(options, ("--secret passw1  --filter $msg.Event=='Newexten'").split(" "));
             final Predicate<Message> filterPredicate = FILTER.getFilterPredicate(line);
             assertTrue(filterPredicate.test(Message.create(new Field("Event: Newexten"))));
         }
 
+    }
+    @Test
+    public void testFilters2() throws ParseException, IOException {
+        final Options options = Opt.create();
+        final CommandLineParser parser = new DefaultParser();
+        CommandLine line = parser.parse(options, ("--secret passw1  " +
+                "--filter $msg.valuesIncludes('9001') " +
+                "--filter !$msg.valuesIncludes('Newexten') " +
+                "--filter $msg.Channel.startsWith('Local')").split(" "));
+        final Predicate<Message> filterPredicate = FILTER.getFilterPredicate(line);
+        try (final MessageParser messageParser = new MessageParser(getClass().getResourceAsStream("/call2.txt"), filterPredicate)) {
+            final List<Message> parse = messageParser.parse();
+            assertEquals(16, parse.size());
+            parse.forEach(System.out::println);
+
+        }
     }
 }
