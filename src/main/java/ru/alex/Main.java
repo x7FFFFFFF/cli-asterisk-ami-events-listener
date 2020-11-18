@@ -3,7 +3,6 @@ package ru.alex;
 import org.apache.commons.cli.*;
 import ru.alex.model.*;
 import ru.alex.util.CommandExecutor;
-import ru.alex.util.Macros;
 import ru.alex.util.Opt;
 
 import java.io.*;
@@ -17,6 +16,7 @@ import static ru.alex.util.Opt.HOST;
 import static ru.alex.util.Opt.PORT;
 
 public class Main implements Closeable {
+    public static final String JS = "/macros.js";
     private final Options options;
     private final CommandLineParser parser;
     private final String[] args;
@@ -28,7 +28,7 @@ public class Main implements Closeable {
     private final AtomicBoolean stopped = new AtomicBoolean(false);
     private final List<Command> commands;
 
-    public Main(Options options, String[] args) throws IOException {
+    public Main(Options options, String[] args) throws Exception {
         this.args = args;
         this.options = Opt.create();
         parser = new DefaultParser();
@@ -50,7 +50,7 @@ public class Main implements Closeable {
         System.out.println("----------------------");
         System.out.println("Default macroses:");
         try (BufferedReader br = new BufferedReader(new InputStreamReader(
-                Main.class.getResourceAsStream(Macros.DEFAULT)))) {
+                Main.class.getResourceAsStream(JS)))) {
             String line;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);

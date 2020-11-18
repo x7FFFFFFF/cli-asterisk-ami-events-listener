@@ -17,14 +17,14 @@ import static ru.alex.util.JsFilter.NASHORN_POLYFILL_ARRAY_PROTOTYPE_INCLUDES;
 import static ru.alex.util.JsFilter.NASHORN_POLYFILL_STRING_PROTOTYPE_INCLUDES;
 
 public class JsExecutor {
-    public JsExecutor(String source, CommandConsumer commandExecutor) {
+    public JsExecutor(String func, String source, Consumer<Command> consumer) {
         ScriptEngine engine = new ScriptEngineManager().getEngineByName("nashorn");
         try {
             engine.eval(NASHORN_POLYFILL_STRING_PROTOTYPE_INCLUDES);
             engine.eval(NASHORN_POLYFILL_ARRAY_PROTOTYPE_INCLUDES);
             final Bindings bindings = engine.createBindings();
-            bindings.put("cmd", commandExecutor);
-            engine.eval(source, bindings);
+            bindings.put("cmd", new CommandConsumer(consumer));
+            engine.eval(func + "\n" + source, bindings);
         } catch (ScriptException e) {
             throw new RuntimeException(e);
         }

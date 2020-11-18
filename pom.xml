@@ -6,7 +6,7 @@
 
     <groupId>ru.alex</groupId>
     <artifactId>cli-asterisk-ami-events-listener</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>

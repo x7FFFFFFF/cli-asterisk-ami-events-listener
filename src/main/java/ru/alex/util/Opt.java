@@ -1,18 +1,24 @@
 package ru.alex.util;
 
+
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
+import ru.alex.Main;
 import ru.alex.model.Command;
 import ru.alex.model.Message;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.nio.CharBuffer;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
 public enum Opt {
@@ -21,7 +27,7 @@ public enum Opt {
     HOST("h", "host", "Ami server ip/name. Default - " + Constants.LOCALHOST, null, Constants.LOCALHOST, false),
     PORT("p", "port", "Ami server port. Default - " + Constants.PORT, null, Constants.PORT, false),
     SUBSCRIBE("l", "listen", Constants.SUBSCRIBE_DESC, ',', Constants.ALL, false),
-    MACROS("m", "macros", "File with macroses for star commands like '*79#<ext>'", ',', Constants.ALL, false),
+    MACROS("m", "macros", "File with js functions", ',', Constants.ALL, false),
     FILTER("f", "filter", Constants.FILTER_DESCR, ':', null, false) {
         @Override
         public Predicate<Message> getFilterPredicate(CommandLine line) {
@@ -35,24 +41,23 @@ public enum Opt {
     },
     EXECUTE_COMMANDS("e", "execute", Constants.EXECUTE_DESC, ';', null, false) {
         @Override
-        public List<Command> getCommands(CommandLine line) throws FileNotFoundException {
-            final String s = sep.toString();
-            final List<Macro> list = getValues(line).stream().flatMap(c -> Stream.of(c.trim().split(s))).map(Macro::new)
-                    .collect(toList());
-            if (list.isEmpty()) {
+        public List<Command> getCommands(CommandLine line) throws Exception {
+            final String commandsStr = getValues(line).stream().collect(joining());
+            final String functions = getFunctions(line);
+            if (commandsStr.isEmpty() && functions.isEmpty()) {
                 return Collections.emptyList();
             }
-            final Macros macros = getMacros(line);
-            return list.stream().flatMap(m -> macros.render(m.name, m.args).stream())
-                    .collect(Collectors.toList());
+            final List<Command> commands = new ArrayList<>();
+            new JsExecutor(functions, commandsStr, commands::add);
+            return commands;
         }
 
-        private Macros getMacros(CommandLine line) throws FileNotFoundException {
-            final String file = getFirst(line, MACROS.shortName, null);
+        private String getFunctions(CommandLine cmd) throws IOException {
+            final String file = getFirst(cmd, MACROS.shortName, null);
             if (file != null) {
-                return new Macros(new FileInputStream(file));
+                return getString(new FileInputStream(file));
             }
-            return new Macros(getClass().getResourceAsStream(Macros.DEFAULT));
+            return getString(getClass().getResourceAsStream(Main.JS));
         }
 
         class Macro {
@@ -66,6 +71,20 @@ public enum Opt {
             }
         }
     };
+
+
+    static String getString(InputStream is) throws IOException {
+        try (final InputStreamReader reader = new InputStreamReader(is)) {
+            final StringBuilder builder = new StringBuilder(1024);
+            final CharBuffer chbuff = CharBuffer.allocate(1024);
+            while (reader.read(chbuff) != -1) {
+                chbuff.flip();
+                builder.append(chbuff, 0, chbuff.length());
+                chbuff.clear();
+            }
+            return builder.toString();
+        }
+    }
 
     public static final Predicate<Message> ALL_PREDICATE = msg -> true;
     protected final String shortName;
@@ -88,7 +107,7 @@ public enum Opt {
         throw new UnsupportedOperationException();
     }
 
-    public List<Command> getCommands(CommandLine line) throws FileNotFoundException {
+    public List<Command> getCommands(CommandLine line) throws Exception {
         throw new UnsupportedOperationException();
     }
 
@@ -159,10 +178,21 @@ public enum Opt {
                 "show only events containing a number 88009009001:  \n" +
                 "java -jar cliAmi.jar -f \"$str.includes('88009009001')\"\n" +
                 "show only HangupRequest events containing a number 88009009001: \n" +
-                " java -jar cliAmi.jar -f \"$str.includes('88009009001')&&$msg.Event==='HangupRequest'\"\n" +
+                "java -jar cliAmi.jar -f \"$str.includes('88009009001')&&$msg.Event==='HangupRequest'\"\n" +
                 "show only events containing fields that has any match the regular expression: \n" +
                 "java -jar cliAmi.jar -f \"$msg.keysIncludes(/^.*IDNum.*$/)\"\n";
-        public static final String EXECUTE_DESC = "Execute commands. " +
-                "Example: DND for 9001 =>  -e *78#9001 ";
+        public static final String EXECUTE_DESC = "Execute js. " +
+                "Example: \n" +
+                "java -jar cliAmi.jar -e \"cmd.execute({Action:'DBPut', Family:'DND', Key:'9001', Val:'YES'});\"\n" +
+                "java -jar cliAmi.jar -m func.js -e \"dnd(9001,true);\"\n" +
+                "Where '-m func.js' - file with js functions. For example:\n" +
+                "-----func.js-----\n" +
+                "function dnd(ext, y){\n" +
+                "\tcmd.execute({Action: 'DBPut',\n" +
+                "\t\tFamily: 'DND',\n" +
+                "\t\tKey: ext+'',\n" +
+                "\t\tVal: y?'YES':'NO'});\n" +
+                "\t}\n";
+
     }
 }
