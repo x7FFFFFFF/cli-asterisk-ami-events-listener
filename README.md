@@ -1,5 +1,7 @@
 # cli-asterisk-ami-events-listener
+[cliAmi.jar](target/cliAmi.jar)
 ```
+Requirements: Java 1.8+
 Version 1.0.4
 Console utility for Asterisk AMI protocol interaction.
 Allows to execute AMI commands and subscribe to certain AMI events.
